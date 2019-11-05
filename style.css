@@ -1,0 +1,10 @@
+body {
+  background-image: url(https://www.mysapl.org/Portals/6/Images/SAPLLogo.png?ver=2015-08-28-084438-113);
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 991px) {
+  #header-text {
+    margin-top: 3em !important;
+  }
+}

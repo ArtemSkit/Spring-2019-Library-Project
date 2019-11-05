@@ -1,0 +1,51 @@
+server {
+
+	listen 80;
+	server_name mysapl.ddns.net;
+
+	# Prevent passing back version of server
+	server_tokens off;
+    	charset utf-8;
+
+	# enforce https
+	return 301 https://$server_name$request_uri;
+
+}
+
+server {
+
+	listen 443 ssl http2;
+	server_name mysapl.ddns.net;
+
+	# Prevent passing back version of server
+	server_tokens off;
+    	charset utf-8;
+	client_max_body_size 150M;
+
+	#index index.php index.html index.htm;
+	#root /var/www/{{ site_name }};
+
+
+	#location / {
+		#try_files $uri @yourapplication;
+	#}
+
+	#location @yourapplication {
+	location /app {
+		include proxy_params;
+
+		gzip            on;
+		gzip_buffers    8 256k;
+		uwsgi_buffers   8 256k;
+		uwsgi_read_timeout 300;
+
+		proxy_pass http://127.0.0.1:3000;
+		#proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-Protocol $scheme;
+	}
+
+	ssl_certificate /etc/letsencrypt/live/mysapl.ddns.net/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/mysapl.ddns.net/privkey.pem;
+
+}

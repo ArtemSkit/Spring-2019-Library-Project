@@ -1,0 +1,12 @@
+[Unit]
+Description=Microblog web application
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/srv/mysapl
+ExecStart=/srv/mysapl/venv/bin/python3 /srv/mysapl/scripts/crawler.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
