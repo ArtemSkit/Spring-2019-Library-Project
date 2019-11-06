@@ -30,7 +30,7 @@ const {
   BasicCard
 } = require('actions-on-google');
 const app = dialogflow({
-  clientId: "919110839943-u2u6lml4vsqghc7hn7ctcevb5h8n5rvr.apps.googleusercontent.com",
+  clientId: "919110839943-XXXXXXXXXX.apps.googleusercontent.com",
   debug: true
 });
 
